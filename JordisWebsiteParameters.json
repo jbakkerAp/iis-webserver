@@ -12,9 +12,6 @@
             },
             "secretName": "vmAdminPassword"
         }
-    },   
-     "dnsLabelPrefix": {
-      "value": "vm-jordisWebsite"
     }
   }
 }
