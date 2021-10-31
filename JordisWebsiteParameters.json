@@ -6,16 +6,15 @@
       "value": "adm_test"
     },
     "adminPassword": {
-      "value": "GEN-PASSWORD"
-    },"adminPassword": {
         "reference": {
             "keyVault": {
                 "id": "/subscriptions/13783c83-ba61-4f1f-a142-0819c1979ba1/resourceGroups/rg-JordisWebsite/providers/Microsoft.KeyVault/vaults/kv-JordisWebsite"
             },
             "secretName": "vmAdminPassword"
         }
-    },    "dnsLabelPrefix": {
-      "value": "JordisWebsite"
+    },   
+     "dnsLabelPrefix": {
+      "value": "vm-jordisWebsite"
     }
   }
 }

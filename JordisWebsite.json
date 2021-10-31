@@ -15,7 +15,7 @@
     },
     "vmName": {
       "type": "string",
-      "defaultValue": "iis",
+      "defaultValue": "vm-jordiswebsite",
       "metadata": {
         "description": "Name of the VM"
       }
@@ -88,18 +88,18 @@
     }
   },
   "variables": {
-    "virtualNetworkName": "dscVNET",
+    "virtualNetworkName": "vn-dscVNET",
     "vnetAddressPrefix": "10.0.0.0/16",
-    "subnet1Name": "dscSubnet-1",
+    "subnet1Name": "sn-dscSubnet-1",
     "subnet1Prefix": "10.0.0.0/24",
     "subnet1Ref": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnet1Name'))]",
     "publicIPAddressType": "Dynamic",
-    "publicIPAddressName": "dscPubIP",
-    "nicName": "dscNIC",
+    "publicIPAddressName": "PubIPdsc",
+    "nicName": "NICdsc",
     "imagePublisher": "MicrosoftWindowsServer",
     "imageOffer": "WindowsServer",
     "vmExtensionName": "dscExtension",
-    "networkSecurityGroupName": "default-NSG"
+    "networkSecurityGroupName": "nsg-default"
   },
   "resources": [
     {
