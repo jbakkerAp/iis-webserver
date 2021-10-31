@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "value": "adm_test"
+    },
+    "adminPassword": {
+      "value": "GEN-PASSWORD"
+    },"adminPassword": {
+        "reference": {
+            "keyVault": {
+                "id": "/subscriptions/13783c83-ba61-4f1f-a142-0819c1979ba1/resourceGroups/rg-test5-31okt/providers/Microsoft.KeyVault/vaults/JordisWebsite"
+            },
+            "secretName": "vmAdminPassword"
+        }
+    },    "dnsLabelPrefix": {
+      "value": "JordisWebsite"
+    }
+  }
+}
