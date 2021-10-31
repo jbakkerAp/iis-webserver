@@ -15,7 +15,7 @@
     },
     "vmName": {
       "type": "string",
-      "defaultValue": "vm-jordiswebsite",
+      "defaultValue": "vmjordi",
       "metadata": {
         "description": "Name of the VM"
       }
