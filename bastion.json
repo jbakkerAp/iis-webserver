@@ -12,7 +12,7 @@
   },
   "variables": {
     "bastionHostName": "HostnBastian",
-    "bastsubnetName": "sn-BastSubnet",
+    "bastsubnetName": "AzureBastionSubnet",
     "bastpublicIpAddressName": "PubIPBast",
     "bastexistingVNETName": "vn-VNET",
     "bastsubnetAddressPrefix": "10.1.1.0/26",
