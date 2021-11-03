@@ -15,7 +15,7 @@
     "bastsubnetName": "sn-BastSubnet",
     "bastpublicIpAddressName": "PubIPBast",
     "bastexistingVNETName": "vn-VNET",
-    "bastsubnetAddressPrefix": "10.0.1.0/27",
+    "bastsubnetAddressPrefix": "10.1.1.0/26",
     "resourceGroup": "rg-JordisWebsite"
   },
   "resources": [  
