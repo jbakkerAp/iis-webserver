@@ -15,7 +15,7 @@
     "bastsubnetName": "AzureBastionSubnet",
     "bastpublicIpAddressName": "PubIPBast",
     "bastexistingVNETName": "vn-VNET",
-    "bastsubnetAddressPrefix": "10.1.1.0/26",
+    "bastsubnetAddressPrefix": "10.0.1.0/27",
     "resourceGroup": "rg-JordisWebsite"
   },
   "resources": [  
@@ -47,7 +47,7 @@
       "apiVersion": "2018-10-01",
       "location": "[parameters('location')]",
             "dependsOn": [
-                "[resourceId(variables('resourceGroup'), 'Microsoft.Network/publicIpAddresses', variables('bastpublicIpAddressName'))]"
+                "[resourceId('Microsoft.Network/publicIpAddresses', variables('bastpublicIpAddressName'))]"
             ],
             "properties": {
                 "ipConfigurations": [
@@ -55,10 +55,10 @@
                         "name": "IpConf",
                         "properties": {
                             "subnet": {
-                                "id": "[resourceId(variables('resourceGroup'), 'Microsoft.Network/virtualNetworks/subnets', variables('bastexistingVNETName'),variables('bastsubnetName'))]"
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('bastexistingVNETName'),variables('bastsubnetName'))]"
                             },
                             "publicIPAddress": {
-                                "id": "[resourceId(variables('resourceGroup'), 'Microsoft.Network/publicIpAddresses', variables('bastpublicIpAddressName'))]"
+                                "id": "[resourceId('Microsoft.Network/publicIpAddresses', variables('bastpublicIpAddressName'))]"
                             }
                         }
                     }
