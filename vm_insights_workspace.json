@@ -1,31 +1,41 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
     "variables": {
-    "workspaceName": "WS-workspacename",
-    "resourcePermissions":"false",
-    "retentionInDays": "120",
-    "location":"westeurope",
-    "sku":"pergb2018" 
-
-    },      
-      "resources": [
-      {
-          "type": "Microsoft.OperationalInsights/workspaces",
-          "name": "[variables('workspaceName')]",
-          "apiVersion": "2020-08-01",
-          "location": "[variables('location')]",
-          "properties": {
-              "sku": {
-                  "name": "[variables('sku')]"
-              },
-              "retentionInDays": "[variables('retentionInDays')]",
-              "features": {
-                  "searchVersion": 1,
-                  "legacy": 0,
-                  "enableLogAccessUsingOnlyResourcePermissions": "[variables('resourcePermissions')]"
-              }
-          }
-      }
-  ]
+        "workspaceResourceId": "/subscriptions/13783c83-ba61-4f1f-a142-0819c1979ba1/resourcegroups/rg-JordisWebsite/providers/microsoft.operationalinsights/workspaces/my-workspace",
+        "workspaceLocation": "West Europe"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2017-05-10",
+            "name": "VMISolutionDeployment",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "resources": [
+                        {
+                            "apiVersion": "2015-11-01-preview",
+                            "type": "Microsoft.OperationsManagement/solutions",
+                            "location": "[variables('workspaceLocation')]",
+                            "name": "[concat('VMInsights', '(', split(variables('workspaceResourceId'),'/')[8], ')')]",
+                            "properties": {
+                                "workspaceResourceId": "[variables('WorkspaceResourceId')]"
+                            },
+                            "plan": {
+                                "name": "[concat('VMInsights', '(', split(variables('workspaceResourceId'),'/')[8], ')')]",
+                                "product": "[concat('OMSGallery/', 'VMInsights')]",
+                                "promotionCode": "",
+                                "publisher": "Microsoft"
+                            }
+                        }
+                    ]
+                }
+            },
+            "subscriptionId": "[split(variables('workspaceResourceId'),'/')[2]]",
+            "resourceGroup": "[split(variables('workspaceResourceId'),'/')[4]]"
+        }
+    ]
 }
