@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "variables": {
+    "workspaceName": "WSName",
+    "sku": "pergb2018",
+    "location": "West Europe",
+    "retentionInDays": 120,
+    "resourcePermissions": true
+  },      
+      "resources": [
+      {
+          "type": "Microsoft.OperationalInsights/workspaces",
+          "name": "[variables('workspaceName')]",
+          "apiVersion": "2020-08-01",
+          "location": "[variables('location')]",
+          "properties": {
+              "sku": {
+                  "name": "[variables('sku')]"
+              },
+              "retentionInDays": "[variables('retentionInDays')]",
+              "features": {
+                  "searchVersion": 1,
+                  "legacy": 0,
+                  "enableLogAccessUsingOnlyResourcePermissions": "[variables('resourcePermissions')]"
+              }
+          }
+      }
+  ]
+}
