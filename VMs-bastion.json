@@ -112,7 +112,7 @@
     "bastionHostName": "HostnBastian",
     "bastsubnetName": "AzureBastionSubnet",
     "bastpublicIpAddressName": "PubIPBast",
-    "bastexistingVNETName": "VN-BastVNet",
+    "bastexistingVNETName": "vn-VNET",
     "bastsubnetAddressPrefix": "10.0.1.0/27"
   },
   "resources": [  
