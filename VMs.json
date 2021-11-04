@@ -108,12 +108,7 @@
     "imagePublisher": "MicrosoftWindowsServer",
     "imageOffer": "WindowsServer",
     "vmExtensionName": "dscExtension",
-    "networkSecurityGroupName": "nsg-default",
-    "bastionHostName": "HostnBastian",
-    "bastsubnetName": "AzureBastionSubnet",
-    "bastpublicIpAddressName": "PubIPBast",
-    "bastexistingVNETName": "vn-VNET",
-    "bastsubnetAddressPrefix": "10.0.1.0/27"
+    "networkSecurityGroupName": "nsg-default"
   },
   "resources": [  
     {
@@ -376,54 +371,6 @@
           }
         }
       }
-    },
-        {
-      "type": "Microsoft.Network/publicIpAddresses",
-      "name": "[variables('bastpublicIpAddressName')]",
-      "apiVersion": "2019-02-01",
-            "location": "[parameters('location')]",
-            "sku": {
-                "name": "Standard"
-            },
-            "properties": {
-                "publicIPAllocationMethod": "Static"
-            },
-            "tags": {}
-    },
-    {
-      "type": "Microsoft.Network/virtualNetworks/subnets",
-      "name": "[concat(variables('bastexistingVNETName'), '/', variables('bastsubnetName'))]",
-      "apiVersion": "2018-04-01",
-      "location": "[parameters('location')]",
-      "properties": {
-        "addressPrefix": "[variables('bastsubnetAddressPrefix')]"
-            }
-    },
-    {
-      "type": "Microsoft.Network/bastionHosts",
-      "name": "[variables('bastionHostName')]",
-      "apiVersion": "2018-10-01",
-      "location": "[parameters('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Network/publicIpAddresses', variables('bastpublicIpAddressName'))]"
-            ],
-            "properties": {
-                "ipConfigurations": [
-                    {
-                        "name": "IpConf",
-                        "properties": {
-                            "subnet": {
-                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('bastexistingVNETName'),variables('bastsubnetName'))]"
-                            },
-                            "publicIPAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIpAddresses', variables('bastpublicIpAddressName'))]"
-                            }
-                        }
-                    }
-                ]
-            },
-            "tags": {}
     }
-
   ]
 }
