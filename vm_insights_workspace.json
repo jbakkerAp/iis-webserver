@@ -1,20 +1,6 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {
-        "workspaceResourceId": {
-            "type": "String",
-            "metadata": {
-                "description": "Resource ID of the workspace."
-            }
-        },
-        "workspaceLocation": {
-            "type": "String",
-            "metadata": {
-                "description": "Location of the workspace."
-            }
-        }
-    },
     "variables": {
         "workspaceResourceId": "/subscriptions/13783c83-ba61-4f1f-a142-0819c1979ba1/resourcegroups/rg-JordisWebsite/providers/microsoft.operationalinsights/workspaces/my-workspace",
         "workspaceLocation": "west europe"
